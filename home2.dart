@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'groupeMaking.dart';
 
 class Home extends StatefulWidget{
   @override
@@ -25,6 +26,7 @@ class _HomeBar extends State<Home>{
   }
 
   Widget build(BuildContext context) {
+    
     return new MaterialApp(
       home: new DefaultTabController(
           length: 4,
@@ -39,6 +41,8 @@ class _HomeBar extends State<Home>{
                 ],
               ),
               actions: <Widget>[
+               // new Image.asset("assets/images/G7-Weltkugel.png", fit: BoxFit.scaleDown,scale:  100.0,color: Colors.black, )
+
                new PopupMenuButton<NavItems>(
                  onSelected: _navItems,
                  itemBuilder: (BuildContext context){
@@ -55,7 +59,7 @@ class _HomeBar extends State<Home>{
                  },
                ),
               ],
-              title: new Text('G7 Home'),
+              title: new Text('Home'),
             ),
             body: new Center(
               child: new Container(
@@ -63,63 +67,110 @@ class _HomeBar extends State<Home>{
                 child: new TabBarView(
                     children: [
                       new Column(
-                        //könnte durch Card ersetzt werden ?
                           children: <Widget>[
-                            const Divider(
-                              height: 1.0, 
-                              color: Colors.black,
-                            ), 
-                            new ListTile(
-                              leading: const CircleAvatar(
-                                child: const Text('BO'), 
-                                backgroundColor: Colors.red, 
-                                foregroundColor: Colors.white,
-                              ), 
-                              title: const Text('BO Informatiker'), 
-                              subtitle: const Text('Mitglieder: 52'),
-                             //wenn man drauf klickt dann:
-                              // onTap: ,
-                            ), 
-                            const Divider(
-                              height: 1.0, 
-                              color: Colors.black,
-                            ), 
-                            new ListTile(
-                              leading: const CircleAvatar(
-                                child: const Text('FA'), 
-                                backgroundColor: Colors.red, 
-                                foregroundColor: Colors.white,
-                              ), 
-                              title: const Text('Familie'), 
-                              subtitle: const Text('Mitglieder: 4'),
-                            ), 
-                            const Divider(
-                              height: 1.0, 
-                              color: Colors.black,
-                            ), 
-                            new ListTile(
-                              leading: const CircleAvatar(
-                                child: const Text('G7'), 
-                                backgroundColor: Colors.red, 
-                                foregroundColor: Colors.white,
-                              ), 
-                              title: const Text('Group7'), 
-                              subtitle: const Text('Mitglieder: 3'),
-                            ), 
-                            const Divider(
-                              height: 1.0, 
-                              color: Colors.black,
-                            ),
-                            new ListTile(
-                              leading: const CircleAvatar(
-                                child: const Text('+', textScaleFactor: 3.0,),
-                                backgroundColor: Colors.transparent,
-                                foregroundColor: Colors.black,
-                                radius: 30.0,
-                              ),
-                              title:const Text('Neue Gruppe erstellen', textScaleFactor: 1.4,) ,
-
-                            ),
+                           new Row(
+                             children: <Widget>[
+                               new CircleAvatar(
+                                 child: const Text('BO'),
+                                 backgroundColor: Colors.red,
+                                 foregroundColor: Colors.white,
+                               ),
+                               new SizedBox(
+                                 height: 70.0,
+                                 width: 300.0,
+                                 child: new Card(
+                                   color: Colors.red[800],
+                                   margin: const EdgeInsets.all(10.0),
+                                   child: new Center(
+                                     child: new ListTile(
+                                       title: const Text('BO Informatiker', style: const TextStyle(color: Colors.white)),
+                                       subtitle: const Text('Mitglieder: 52',style: const TextStyle(color: Colors.white)),
+                                       //wenn man drauf klickt dann:
+                                       // onTap: ,
+                                     ),
+                                   ),
+                                 ),
+                               ),
+                             ],
+                           ),
+                           new Row(
+                             children: <Widget>[
+                               new CircleAvatar(
+                                 child: const Text('G7'),
+                                 backgroundColor: Colors.red,
+                                 foregroundColor: Colors.white,
+                               ),
+                               new SizedBox(
+                                 height: 70.0,
+                                 width: 300.0,
+                                 child: new Card(
+                                   color: Colors.red[800],
+                                   margin: const EdgeInsets.all(10.0),
+                                   child: new Center(
+                                     child: new ListTile(
+                                       title: const Text('Group7', style: const TextStyle(color: Colors.white)),
+                                       subtitle: const Text('Mitglieder: 3',style: const TextStyle(color: Colors.white)),
+                                       //wenn man drauf klickt dann:
+                                       // onTap: ,
+                                     ),
+                                   ),
+                                 ),
+                               ),
+                             ],
+                           ),
+                           new Row(
+                             children: <Widget>[
+                               new CircleAvatar(
+                                 child: const Text('FA'),
+                                 backgroundColor: Colors.red,
+                                 foregroundColor: Colors.white,
+                               ),
+                               new SizedBox(
+                                 height: 70.0,
+                                 width: 300.0,
+                                 child: new Card(
+                                   color: Colors.red[800],
+                                   margin: const EdgeInsets.all(10.0),
+                                   child: new Center(
+                                     child: new ListTile(
+                                       title: const Text('Familie', style: const TextStyle(color: Colors.white)),
+                                       subtitle: const Text('Mitglieder: 4',style: const TextStyle(color: Colors.white)),
+                                       //wenn man drauf klickt dann:
+                                       // onTap: ,
+                                     ),
+                                   ),
+                                 ),
+                               ),
+                             ],
+                           ),
+                           new Row(
+                             children: <Widget>[
+                               new CircleAvatar(
+                                 child: const Icon(Icons.add, color: Colors.red,),
+                                 backgroundColor: Colors.transparent,
+                                 radius: 30.0,
+                               ),
+                               new SizedBox(
+                                 height: 64.0,
+                                 width: 256.0,
+                                 child: new Card(
+                                   color: Colors.white,
+                                   margin: const EdgeInsets.all(10.0),
+                                   child: new Center(
+                                     child: new ListTile(
+                                         title:const Text('Neue Gruppe erstellen',
+                                           style: const TextStyle(color: Colors.red),
+                                         ),
+                                       onTap: (){
+                                           Navigator.push(context, new MaterialPageRoute(builder: (context) => new GroupMaking()));
+                                       },
+                                       // onTap: ,
+                                     ),
+                                   ),
+                                 ),
+                               ),
+                             ],
+                           ),
                           ]
                       ),
                     ]
